@@ -107,11 +107,11 @@ emoji_dict = load_dictionary("dictionary/emoji-dict.txt")
 vndict.update(emoji_dict)
 boost_dict = load_boost_word('dictionary/boost-words.txt')
 
-# process_dataset('input/input.yaml', 'output/output.txt')
+process_dataset('input/input.yaml', 'output/output.txt')
 
 
-tweet = "CÓ hay KHÔNG? Không phải cứ nói là người ta tin."
-tokens = pre_process(tweet)
-pos, neg = evalue_score(tokens)
-print(tokens)
-print("pos:", pos, "neg: ", neg)
+# tweet = "CÓ hay KHÔNG? Không phải cứ nói là người ta tin."
+# tokens = pre_process(tweet)
+# pos, neg = evalue_score(tokens)
+# print(tokens)
+# print("pos:", pos, "neg: ", neg)

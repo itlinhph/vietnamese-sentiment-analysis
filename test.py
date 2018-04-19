@@ -111,32 +111,32 @@ import re
 
 # print(emoji.demojize('\U0001F643 \U0001F618 \U0001F60C \U0001F917 \n 😍😂 😭 😎 \n ❤️\n 💖'))
 
-def load_dictionary(filename):
-    vndict = {}
-    dict_file = open(filename, 'r').read().split('\n')
-    for line in dict_file:
-        if line == "":
-            continue
-        line = line.split('\t')
-        score = [int(line[1]), int(line[2])]
-        # word, pos , neg = line.partition("\t")[:::3]
-        vndict[line[0].strip()] = score
-    return vndict
+# def load_dictionary(filename):
+#     vndict = {}
+#     dict_file = open(filename, 'r').read().split('\n')
+#     for line in dict_file:
+#         if line == "":
+#             continue
+#         line = line.split('\t')
+#         score = [int(line[1]), int(line[2])]
+#         # word, pos , neg = line.partition("\t")[:::3]
+#         vndict[line[0].strip()] = score
+#     return vndict
 
-def edit_dict(vndict, fileout):
-    string = ""
-    text_file = open(fileout, "w")
-    for word in sorted(vndict):
-        word1 = word.lower().replace(" ", "_")
-        string+= word1 +"\t" + str(vndict[word][0]) + "\t" + str(vndict[word][1]) + "\n"
-    text_file.write(string)
-    text_file.close()
+# def edit_dict(vndict, fileout):
+#     string = ""
+#     text_file = open(fileout, "w")
+#     for word in sorted(vndict):
+#         word1 = word.lower().replace(" ", "_")
+#         string+= word1 +"\t" + str(vndict[word][0]) + "\t" + str(vndict[word][1]) + "\n"
+#     text_file.write(string)
+#     text_file.close()
 
-# vndict = load_dictionary("vndictraw")
-# edit_dict(vndict, "vndictout")
+# # vndict = load_dictionary("vndictraw")
+# # edit_dict(vndict, "vndictout")
 
 
-# dict_file = open("vndictraw", 'r').read()
+# # dict_file = open("vndictraw", 'r').read()
 
 def write_to_file(string, fileout):
 
@@ -145,53 +145,65 @@ def write_to_file(string, fileout):
     text_file.close()
 
 
-def load_emoji(filename):
+# def load_emoji(filename):
 
-    dict_emoji = {}
-    emoji_file = open(filename, 'r').read().split('\n')
-    for line in emoji_file:
-        if line == "":
-            continue
-        emoji_sysbol, text = line.partition("\t")[::2]
-        dict_emoji[emoji_sysbol.strip()] = text
-    return dict_emoji
+#     dict_emoji = {}
+#     emoji_file = open(filename, 'r').read().split('\n')
+#     for line in emoji_file:
+#         if line == "":
+#             continue
+#         emoji_sysbol, text = line.partition("\t")[::2]
+#         dict_emoji[emoji_sysbol.strip()] = text
+#     return dict_emoji
 
-emoji2 = load_emoji('emoji2.txt')
+# emoji2 = load_emoji('emoji2.txt')
 
-# print(emoji2)
+# # print(emoji2)
 
-def convert_score(string):
-    if string == "rất tệ":
-        return -2
-    elif string == "rất tốt":
-        return 2
-    elif string == "bình_thường":
-        return 0
-    elif string == "rất rất tệ":
-        return -3
-    elif string == "rất rất tốt":
-        return 3
-    elif string == "tệ":
-        return -1
-    elif string == "tốt":
-        return 1
+# def convert_score(string):
+#     if string == "rất tệ":
+#         return -2
+#     elif string == "rất tốt":
+#         return 2
+#     elif string == "bình_thường":
+#         return 0
+#     elif string == "rất rất tệ":
+#         return -3
+#     elif string == "rất rất tốt":
+#         return 3
+#     elif string == "tệ":
+#         return -1
+#     elif string == "tốt":
+#         return 1
 
-def fix_emoji(emoji_dict, fileout):
-    string = ""
-    for emoji in emoji_dict:
-        score = int(convert_score(emoji_dict[emoji]))
-        print(emoji, score)
-        if score >0:
-            pos = score
-            neg = 0
-        elif score<0:
-            pos = 0
-            neg = -score
-        else:
-            pos = 0
-            neg = 0
-        string += ":" + emoji + ":" + "\t" + str(pos) + "\t" + str(neg) + "\n"
+# def fix_emoji(emoji_dict, fileout):
+#     string = ""
+#     for emoji in emoji_dict:
+#         score = int(convert_score(emoji_dict[emoji]))
+#         print(emoji, score)
+#         if score >0:
+#             pos = score
+#             neg = 0
+#         elif score<0:
+#             pos = 0
+#             neg = -score
+#         else:
+#             pos = 0
+#             neg = 0
+#         string += ":" + emoji + ":" + "\t" + str(pos) + "\t" + str(neg) + "\n"
     
-    write_to_file(string, fileout)
+#     write_to_file(string, fileout)
 
-fix_emoji(emoji2, "emoji_fix")
+# fix_emoji(emoji2, "emoji_fix")
+
+
+def yaml_to_text(input_file):
+    with open(input_file, "r") as dataset:
+        string = ""
+        data = yaml.load(dataset)
+        for tweet in data:
+            tweet = tweet.replace("\n", " ")
+            string += tweet +"\n"
+        write_to_file(string, "dataset")
+
+yaml_to_text("input/input.yaml")

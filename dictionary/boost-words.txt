@@ -1,11 +1,15 @@
 không	-1
 ko	-1
-không_thể	-1
+không_thể	-2
 bất	-1
 rất	2
 quá	2
 nổi	2
 hơn	2
 đậm_đà	2
+nhiều	2
 vãi	2
 vc	2
+vl	2
+vkl	2
+nhất	2

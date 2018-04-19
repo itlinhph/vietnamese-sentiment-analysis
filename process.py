@@ -40,6 +40,9 @@ def boost_word_score(i, tokens):
     if i < len(tokens)-1:
         after_word = tokens[i+1]
         listword.append(after_word)
+        if i< len(tokens) -2:
+            after_word2 = tokens[i+2]
+            listword.append(after_word2)
     if i>0:
         prev_word = tokens[i-1]
         listword.append(prev_word)
@@ -64,7 +67,7 @@ def evalue_score(tokens):
         if word in vndict:
             pos_score += (vndict[word][0] * boost_word_score(i, tokens) )
             neg_score += (vndict[word][1] * boost_word_score(i, tokens))
-            # print(word, i, boost_word_score(i, tokens), "Pos: ", pos_score, "Neg: ", neg_score)
+            # print(word, boost_word_score(i, tokens), "Pos: ", pos_score, "Neg: ", neg_score)
     
     return pos_score , neg_score
 
@@ -80,24 +83,20 @@ def pre_process(tweet):
 
 def process_dataset(input_file, output_file):
     
-    with open(input_file, "r") as dataset :
-        data = yaml.load(dataset)
-        print("input length:",len(data))
-        id = 1
-        str_file = "ID\tPositive_score\tNegative_score\tContent\n"
+    data = open(input_file, 'r').read().split('\n')
+    print("input length:",len(data))
+    id = 1
+    str_file = "ID\tPositive_score\tNegative_score\tContent\n"
 
-        for tweet in data:
-            tokens = pre_process(tweet)
-            tweet = tweet.replace("\n", " ")
-            ignore = "Tôi đã thêm video vào danh sách"
-            if ignore in tweet:
-                continue
-            #Evalue score:
-            pos_score, neg_score = evalue_score(tokens)
-            
-            str_file += str(id) + "\t"+ str(pos_score) +"\t" + str(neg_score) + "\t" + tweet + "\n"
-            id+=1
-        print("output length: ", id)
+    for tweet in data:
+        tokens = pre_process(tweet)
+        tweet = tweet.replace("\n", " ")
+
+        #Evalue score:
+        pos_score, neg_score = evalue_score(tokens)
+        
+        str_file += str(id) + "\t"+ str(pos_score) +"\t" + str(neg_score) + "\t" + tweet + "\n"
+        id+=1
 
     #write data
     text_file = open(output_file, "w")
@@ -106,16 +105,16 @@ def process_dataset(input_file, output_file):
 
 
 #Load file:
-vndict = load_dictionary("dictionary/vndict")               # Main dictinary
+vndict = load_dictionary("dictionary/vndict.txt")               # Main dictinary
 emoji_dict = load_dictionary("dictionary/emoji-dict.txt")   # Emoji dictionary
 boost_dict = load_boost_word('dictionary/boost-words.txt')  # Boost dictionary
 
 # Update dictionary with emoji score:
 vndict.update(emoji_dict)
 
-process_dataset('input/input.yaml', 'output/output.txt')
+process_dataset('input/dataset.txt', 'output/output.txt')
 
-# tweet = "CÓ hay KHÔNG? Không phải cứ nói là người ta tin."
+# tweet = "mẹ kiếp em ghét writing vcl :) trời má bth 120 rặn mệt vl giờ 160 chữ"
 # tokens = pre_process(tweet)
 # pos, neg = evalue_score(tokens)
 # print(tokens)

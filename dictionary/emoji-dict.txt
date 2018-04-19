@@ -81,7 +81,14 @@
 :red_heart:	2	0
 :broken_heart:	0	1
 :sparkling_heart:	1	0
+huhu	0	1
+haha	0	1
 vkl	0	2
 đmm	0	2
 tks	1	0
 dm	0	1
+đéo	0	2
+éo	0	2
+méo	0	2
+tạch	0	2
+mẹ_kiếp	0	2

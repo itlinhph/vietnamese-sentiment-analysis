@@ -1,3 +1,4 @@
+ăn_cắp	0	1
 bảo_hành	1	0
 chúa_tể	1	1
 chủ_tịch	1	0
@@ -63,7 +64,8 @@ bị_ép_buộc	0	1
 bị_giam_cầm	0	1
 bị_kết_tội	0	1
 bị_vứt_bỏ	0	1
-biến_chất	0	0
+biến	0	1
+biến_chất	0	1
 biến_cố	0	1
 biến_dạng	0	1
 biến_hoá	0	0
@@ -552,7 +554,7 @@ chuẩn_bị_trước	0	0
 chuộc_lỗi	1	0
 chào_mừng	1	0
 chào_tạm_biệt	0	0
-chán	1	0
+chán	0	1
 chán_ngán	0	1
 chán_ngấy	0	1
 chán_ngắt	0	1
@@ -707,7 +709,6 @@ chậm_tiếp_thu	0	1
 chật_cứng	0	1
 chật_hẹp	0	1
 chật_ních	0	1
-chắc	1	0
 chắc_chắn	1	0
 chắc_khoẻ	1	0
 chắc_nịch	1	0
@@ -1805,7 +1806,6 @@ hết_thời_thanh_xuân	0	1
 hết_đát	0	1
 hề	0	0
 hệ_quả	0	0
-học	1	0
 học_bạ	0	0
 học_giả	1	0
 học_nghề	0	0
@@ -3192,6 +3192,7 @@ mải_mê_đánh_bạc	0	1
 mảnh_dẻ	0	1
 mảnh_dẻ_mảnh_mai	1	0
 mảnh_khảnh	0	1
+mất	0	1
 mất_bình_tĩnh	0	1
 mất_dạy	0	1
 mất_kiểm_soát	0	1
@@ -5382,7 +5383,6 @@ vụng_về	0	1
 vứt_đi	0	1
 vừa_bị_lấy_đi	0	1
 vừa_bị_trộm_đi	0	1
-vừa_bị_ăn_cắp	0	1
 vừa_hơn	1	0
 vừa_lòng	1	0
 vừa_phải	1	0
@@ -5434,6 +5434,8 @@ xoa_dịu	1	0
 xoay_ngược	0	0
 xoi_mói	0	1
 xong	1	0
+xóa	0	1
+xoá	0	1
 xui	0	1
 xui_xẻo	0	1
 xun_xoe_bợ_đỡ	0	1

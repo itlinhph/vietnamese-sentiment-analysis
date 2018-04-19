@@ -1,7 +1,3 @@
-3d	0	0
-bác_sĩ	1	0
-bách_khoa_toàn_thư	1	0
-bạch_mã_hoàng_tử	1	0
 bảo_hành	1	0
 chúa_tể	1	1
 chủ_tịch	1	0
@@ -195,14 +191,12 @@ bơ_vơ	0	1
 bơi	1	0
 bướng	0	1
 bướng_bỉnh	0	1
-bạ_đâu_vứt_đấy	0	1
 bạc	1	0
 bạc_bẽo	0	1
 bạch_tuộc	0	0
 bại_liệt	0	1
 bại_sản	0	1
 bại_trận	0	1
-bạn	1	0
 bạn_thân	1	0
 bạn_đọc	0	0
 bạn_đồng_hành	1	0
@@ -516,7 +510,6 @@ chi_phiếu_khống	0	1
 chi_phối	1	1
 chia_phần	1	0
 chia_rẽ	0	1
-chia_sẻ	1	0
 chia_đôi	0	1
 chiếm_giữ	1	0
 chiếm_hữu	1	0
@@ -1694,9 +1687,8 @@ hàm_ẩn	0	0
 hành_chính	0	0
 hành_hạ	0	1
 hành_trình	1	0
-hành_động	0	1
 hào_hoa	1	0
-hào_hoa_phong_nhã	1	0
+hào_hoa	1	0
 hào_hùng	1	0
 hào_hển	0	1
 hào_hứng	1	0
@@ -4112,6 +4104,7 @@ sa_ngã	0	1
 sa_sút	0	1
 sa_đoạ	0	1
 sai	0	1
+sai_trái	0	1
 sai_luật	0	1
 sai_lầm	0	1
 sai_mục_đích	0	1

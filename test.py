@@ -32,8 +32,6 @@ import re
 #     print(tokens)
 #     return tokens
 
-# text = 'RT @tom_watson: face_with_tears_of_joy afaik Link to the full legal advice on UK air strikes in Syria. https://t.co/Pf45W4I7wZ sdsds'
-
 # print(remove_special_text(text))
 
 # def load_boost_word(filename):
@@ -70,24 +68,6 @@ import re
 # text_file.write(string)
 # text_file.close()
 
-
-
-# def load_emoji(filename):
-    
-#     dict_emoji = {}
-#     emoji_file = open(filename,'r').read().split('\n')
-#     for line in emoji_file:
-#         emoji_sysbol, text = line.partition("\t")[::2]
-#         dict_emoji[emoji_sysbol.strip()] = text
-#     return dict_emoji
-
-
-
-# emoji2 = load_emoji('dictionary/emoji2.txt')
-
-# # print(emoji2)
-# emoji = load_emoji('dictionary/emoji.txt')
-# # print(emoji)
 
 # emoji2.update(emoji)
 # print(emoji2)
@@ -152,13 +132,66 @@ def edit_dict(vndict, fileout):
     text_file.write(string)
     text_file.close()
 
-vndict = load_dictionary("vndictraw")
-edit_dict(vndict, "vndictout")
+# vndict = load_dictionary("vndictraw")
+# edit_dict(vndict, "vndictout")
 
 
 # dict_file = open("vndictraw", 'r').read()
-# text_file = open("vndictout", "w")
-# from pyvi import ViTokenizer
-# string = ViTokenizer.tokenize(dict_file)
-# text_file.write(string)
-# text_file.close()
+
+def write_to_file(string, fileout):
+
+    text_file = open(fileout, "w")
+    text_file.write(string)
+    text_file.close()
+
+
+def load_emoji(filename):
+
+    dict_emoji = {}
+    emoji_file = open(filename, 'r').read().split('\n')
+    for line in emoji_file:
+        if line == "":
+            continue
+        emoji_sysbol, text = line.partition("\t")[::2]
+        dict_emoji[emoji_sysbol.strip()] = text
+    return dict_emoji
+
+emoji2 = load_emoji('emoji2.txt')
+
+# print(emoji2)
+
+def convert_score(string):
+    if string == "rất tệ":
+        return -2
+    elif string == "rất tốt":
+        return 2
+    elif string == "bình_thường":
+        return 0
+    elif string == "rất rất tệ":
+        return -3
+    elif string == "rất rất tốt":
+        return 3
+    elif string == "tệ":
+        return -1
+    elif string == "tốt":
+        return 1
+
+def fix_emoji(emoji_dict, fileout):
+    string = ""
+    for emoji in emoji_dict:
+        score = int(convert_score(emoji_dict[emoji]))
+        print(emoji, score)
+        if score >0:
+            pos = score
+            neg = 0
+        elif score<0:
+            pos = 0
+            neg = -score
+        else:
+            pos = 0
+            neg = 0
+        string += ":" + emoji + ":" + "\t" + str(pos) + "\t" + str(neg) + "\n"
+    
+    write_to_file(string, fileout)
+
+fix_emoji(emoji2, "emoji_fix")

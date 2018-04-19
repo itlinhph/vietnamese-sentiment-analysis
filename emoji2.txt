@@ -4,14 +4,14 @@ anxious_face_with_sweat	bình_thường
 astonished_face	tệ
 beaming_face_with_smiling_eyes	rất tốt
 confounded_face	bình_thường
-confounded_face_hugely	rất tệ	
+confounded_face_hugely	rất tệ
 confused_face	tệ
 crying_face	rất tệ
 disappointed_but_relieved_face	rất rất tệ
 disappointed_face	rất tệ
 dizzy_face	bình_thường
-downcast_face_with_sweat	có_vẻ tệ
-expressionless_face	có_vẻ tệ
+downcast_face_with_sweat	tệ
+expressionless_face	tệ
 face_blowing_a_kiss	rất tốt
 face_savoring_food	rất tốt
 face_savouring_delicious_food	rất tốt
@@ -32,10 +32,10 @@ face_with_tongue	tốt
 face_without_mouth	bình_thường
 fearful_face	tệ
 flushed_face	bình_thường
-frowning_face	có_vẻ tệ
+frowning_face	tệ
 frowning_face_with_open_mouth	bình_thường
-grimacing_face	có_vẻ tệ
-grinning_face	có_vẻ tốt
+grimacing_face	tệ
+grinning_face	tốt
 grinning_face_with_big_eyes	rất rất tốt
 grinning_face_with_smiling_eyes	tốt
 grinning_face_with_sweat	rất tốt
@@ -47,7 +47,7 @@ kissing_face_with_closed_eyes	rất tốt
 kissing_face_with_smiling_eyes	rất rất tốt
 loudly_crying_face	rất tệ
 money-mouth_face	tốt
-bình_thường_face	just bình_thường
+bình_thường_face	bình_thường
 pensive_face	tệ
 persevering_face	tệ
 pouting_face	rất tệ
@@ -55,11 +55,11 @@ relieved_face	tốt
 sad_but_relieved_face	rất tệ
 sleeping_face	bình_thường
 sleepy_face	tệ
-slightly_frowning_face	có_vẻ tệ
+slightly_frowning_face	tệ
 slightly_smiling_face	tốt
 smiling_face	tốt
-smiling_face_with_halo	có_vẻ tốt
-smiling_face_with_heart-eyes	có_vẻ tốt
+smiling_face_with_halo	tốt
+smiling_face_with_heart-eyes	tốt
 smiling_face_with_heart_shaped_eyes	rất rất tốt
 smiling_face_with_open_mouth	rất tốt
 smiling_face_with_open_mouth_and_cold_sweat	tốt
@@ -68,15 +68,14 @@ smiling_face_with_open_mouth_and_tightly_closed_eyes	rất tốt
 smiling_face_with_smiling_eyes	tốt
 smiling_face_with_sunglasses	tốt
 smirking_face	tệ
-squinting_face_with_tongue	có_vẻ tốt
-thinking_face	just tốt
+squinting_face_with_tongue	tốt
+thinking_face	tốt
 tired_face	rất tệ
-tks	thanks
 unamused_face	tệ
 upside-down_face	bình_thường
 weary_face	rất tệ
 winking_face	tốt
-winking_face_with_tongue	có_vẻ tốt
+winking_face_with_tongue	tốt
 worried_face	rất tệ
 zipper-mouth_face	tệ
 red_heart	rất tốt
@@ -84,3 +83,4 @@ broken_heart	tệ
 sparkling_heart	tốt
 vkl	rất tệ
 đmm	rất tệ
+tks	tốt

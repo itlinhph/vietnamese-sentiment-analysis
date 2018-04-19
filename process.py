@@ -6,30 +6,10 @@ from pyvi import ViTokenizer
 
 
 def remove_special_text(tweet):
-    tokens = re.sub(r'(http\S+)|(@\S+)|RT|\#|\.|\:|,', ' ', tweet)
+    tokens = re.sub(r'(http\S+)|(@\S+)|RT|\#|!|:|\.|,', ' ', tweet)
     
     return tokens
 
-
-def load_emoji(filename):
-    
-    dict_emoji = {}
-    emoji_file = open(filename,'r').read().split('\n')
-    for line in emoji_file:
-        if line == "":
-            continue
-        emoji_sysbol, text = line.partition("\t")[::2]
-        dict_emoji[emoji_sysbol.strip()] = text
-    return dict_emoji
-
-def replace_emoji(tokens, dict_emoji):
-
-    for emoji in dict_emoji:
-        string = ":" + emoji + ":"
-        repl = " " + dict_emoji[emoji] + " "
-        tokens = tokens.replace(string, repl )
-
-    return tokens
 
 def load_dictionary(filename):
     vndict = {}
@@ -85,19 +65,17 @@ def evalue_score(tokens):
             # print(boost_word_score(i, tokens))
             pos_score += (vndict[word][0] * boost_word_score(i, tokens) )
             neg_score += (vndict[word][1] * boost_word_score(i, tokens))
+            print(word, i, boost_word_score(i, tokens), "Pos: ", pos_score, "Neg: ", neg_score)
     
-    # print("Pos: ", pos_score, "Neg: ", neg_score)
     return pos_score , neg_score
 
 def pre_process(tweet):
 
     tweet = ViTokenizer.tokenize(tweet)             # Tokenizer Vietnamese
     tokens = remove_special_text(tweet)             # Remove special text
-    tweet_demoji = emoji.demojize(tokens)           # Convert emojition to text
-    dict_emoji = load_emoji('dictionary/emoji.txt') # Load file emoji
-    tokens =replace_emoji(tweet_demoji, dict_emoji) # Replace emoji to text
+    tokens = emoji.demojize(tokens)                 # Convert emojition to text
     tokens = tokens.lower()                         # To lowercase
-    tokens = tokens.split()             # Tokenize tweet
+    tokens = tokens.split()                         # Tokenize tweet
     
     return tokens
 
@@ -125,13 +103,15 @@ def process_dataset(input_file, output_file):
 
 #Load file:
 vndict = load_dictionary("dictionary/vndict")
+emoji_dict = load_dictionary("dictionary/emoji-dict.txt")
+vndict.update(emoji_dict)
 boost_dict = load_boost_word('dictionary/boost-words.txt')
 
-process_dataset('input/input.yaml', 'output/output.txt')
+# process_dataset('input/input.yaml', 'output/output.txt')
 
 
-# tweet = "Tăng cường đàn áp không dập tắt được phong trào đấu tranh đòi dân chủ dân sinh"
-# tokens = pre_process(tweet)
-# pos, neg = evalue_score(tokens)
-# print(tokens)
-# print("pos:", pos, "neg: ", neg)
+tweet = "CÓ hay KHÔNG? Không phải cứ nói là người ta tin."
+tokens = pre_process(tweet)
+pos, neg = evalue_score(tokens)
+print(tokens)
+print("pos:", pos, "neg: ", neg)

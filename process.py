@@ -62,10 +62,9 @@ def evalue_score(tokens):
     neg_score = 0
     for i,word in enumerate(tokens):
         if word in vndict:
-            # print(boost_word_score(i, tokens))
             pos_score += (vndict[word][0] * boost_word_score(i, tokens) )
             neg_score += (vndict[word][1] * boost_word_score(i, tokens))
-            print(word, i, boost_word_score(i, tokens), "Pos: ", pos_score, "Neg: ", neg_score)
+            # print(word, i, boost_word_score(i, tokens), "Pos: ", pos_score, "Neg: ", neg_score)
     
     return pos_score , neg_score
 
@@ -83,32 +82,38 @@ def process_dataset(input_file, output_file):
     
     with open(input_file, "r") as dataset :
         data = yaml.load(dataset)
-        print(len(data))
+        print("input length:",len(data))
         id = 1
         str_file = "ID\tPositive_score\tNegative_score\tContent\n"
 
         for tweet in data:
             tokens = pre_process(tweet)
             tweet = tweet.replace("\n", " ")
+            ignore = "Tôi đã thêm video vào danh sách"
+            if ignore in tweet:
+                continue
             #Evalue score:
             pos_score, neg_score = evalue_score(tokens)
             
             str_file += str(id) + "\t"+ str(pos_score) +"\t" + str(neg_score) + "\t" + tweet + "\n"
             id+=1
+        print("output length: ", id)
 
+    #write data
     text_file = open(output_file, "w")
     text_file.write(str_file)
     text_file.close()
 
 
 #Load file:
-vndict = load_dictionary("dictionary/vndict")
-emoji_dict = load_dictionary("dictionary/emoji-dict.txt")
+vndict = load_dictionary("dictionary/vndict")               # Main dictinary
+emoji_dict = load_dictionary("dictionary/emoji-dict.txt")   # Emoji dictionary
+boost_dict = load_boost_word('dictionary/boost-words.txt')  # Boost dictionary
+
+# Update dictionary with emoji score:
 vndict.update(emoji_dict)
-boost_dict = load_boost_word('dictionary/boost-words.txt')
 
 process_dataset('input/input.yaml', 'output/output.txt')
-
 
 # tweet = "CÓ hay KHÔNG? Không phải cứ nói là người ta tin."
 # tokens = pre_process(tweet)

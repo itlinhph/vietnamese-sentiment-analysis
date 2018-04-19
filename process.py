@@ -127,7 +127,7 @@ def process_dataset(input_file, output_file):
 vndict = load_dictionary("dictionary/vndict")
 boost_dict = load_boost_word('dictionary/boost-words.txt')
 
-process_dataset('input/vntrend2.yaml', 'output/vntrend2.txt')
+process_dataset('input/input.yaml', 'output/output.txt')
 
 
 # tweet = "Tăng cường đàn áp không dập tắt được phong trào đấu tranh đòi dân chủ dân sinh"

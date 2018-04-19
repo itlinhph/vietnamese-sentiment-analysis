@@ -82,3 +82,5 @@ zipper-mouth_face	tệ
 red_heart	rất tốt
 broken_heart	tệ
 sparkling_heart	tốt
+vkl	rất tệ
+đmm	rất tệ
